@@ -22,7 +22,7 @@ namespace WertVomBroker
             client.MqttMsgPublishReceived += MqttMsgReceived;
             clientId = Guid.NewGuid().ToString();
             client.Connect(clientId);
-            client.Subscribe(new string[] { "villach/4BHIF/Temperatur" }, new byte[] { 2 });
+            client.Subscribe(new string[] { "htlvillach/4BHIF/Schnittchen/Luftfeuchte" }, new byte[] { 2 });
         }
         private void DoChartStuff()
         {
@@ -44,11 +44,11 @@ namespace WertVomBroker
         }
         private void ButtonAus_Click(object sender, RoutedEventArgs e)
         {
-            client.Publish("villach/4BHIF/Thurau/Luefter", Encoding.ASCII.GetBytes("off"));
+            client.Publish("htlvillach/4BHIF/Schnittchen/Luefter", Encoding.ASCII.GetBytes("off"));
         }
         private void ButtonEin_Click(object sender, RoutedEventArgs e)
         {
-            client.Publish("villach/4BHIF/Thurau/Luefter", Encoding.ASCII.GetBytes("on"));
+            client.Publish("htlvillach/4BHIF/Schnittchen/Luefter", Encoding.ASCII.GetBytes("on"));
         }
         private void MqttMsgReceived(object sender, MqttMsgPublishEventArgs e)
         {
